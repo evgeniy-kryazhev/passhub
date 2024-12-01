@@ -1,0 +1,15 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<AuthorizeView>
+    <Authorized>
+        <PasswordsList></PasswordsList>
+    </Authorized>
+    <NotAuthorized>
+        <section class="mt-5 is-display-flex is-flex-direction-column is-align-items-center is-gap-3">
+            <h2>Добро пожаловать на сайт где можно хранить пароли</h2>
+            <NavLink href="Account/Register" class="button is-primary is-size-5">Зарегистрироватся</NavLink>
+        </section>
+    </NotAuthorized>
+</AuthorizeView>

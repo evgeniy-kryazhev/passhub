@@ -1,0 +1,130 @@
+﻿@page "/Account/Login"
+
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Identity
+@using Passhub.Domain.Identity
+@using Passhub.EfCore
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject ILogger<Login> Logger
+@inject NavigationManager NavigationManager
+@inject IdentityRedirectManager RedirectManager
+
+<PageTitle>Log in</PageTitle>
+
+<h1 class="is-size-1 has-text-centered mt-5">Passhub</h1>
+
+<div class="container">
+    <div class="columns">
+        <div class="column is-3-desktop is-6-tablet mx-auto mt-5">
+            <div class="card">
+                <div class="card-content is-shadowless">
+                    <section>
+                        <StatusMessage Message="@errorMessage"/>
+                        <EditForm Model="Input"
+                                  method="post"
+                                  OnValidSubmit="LoginUser"
+                                  FormName="login"
+                                  class="is-display-flex is-flex-direction-column is-gap-3">
+                            <DataAnnotationsValidator/>
+                            <ValidationSummary class="text-danger" role="alert"/>
+                            <div class="control">
+                                <InputText @bind-Value="Input.Email" 
+                                           id="Input.Email" 
+                                           class="input" 
+                                           autocomplete="username" 
+                                           aria-required="true" 
+                                           placeholder="name@example.com"/>
+                                <ValidationMessage For="() => Input.Email" class="text-danger"/>
+                            </div>
+                            <div class="control">
+                                <InputText type="password" 
+                                           @bind-Value="Input.Password" 
+                                           id="Input.Password" 
+                                           class="input" 
+                                           autocomplete="current-password" 
+                                           aria-required="true" 
+                                           placeholder="password"/>
+                                <ValidationMessage For="() => Input.Password" class="text-danger"/>
+                            </div>
+                            <div class="checkbox">
+                                <InputCheckbox @bind-Value="Input.RememberMe"/>
+                                Remember me
+                            </div>
+                            <div>
+                                <button type="submit" class="button is-primary is-fullwidth">Log in</button>
+                            </div>
+                            <div>
+                                <p>
+                                    <a class="link-underline-none" href="@(NavigationManager.GetUriWithQueryParameters("Account/Register", new Dictionary<string, object?> { ["ReturnUrl"] = ReturnUrl }))">Register as a new user</a>
+                                </p>
+                            </div>
+                        </EditForm>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section>
+        <ExternalLoginPicker/>
+    </section>
+</div>
+
+@code {
+    private string? errorMessage;
+
+    [CascadingParameter] private HttpContext HttpContext { get; set; } = default!;
+
+    [SupplyParameterFromForm] private InputModel Input { get; set; } = new();
+
+    [SupplyParameterFromQuery] private string? ReturnUrl { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (HttpMethods.IsGet(HttpContext.Request.Method))
+        {
+            // Clear the existing external cookie to ensure a clean login process
+            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+        }
+    }
+
+    public async Task LoginUser()
+    {
+        // This doesn't count login failures towards account lockout
+        // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+        var result = await SignInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+        if (result.Succeeded)
+        {
+            Logger.LogInformation("User logged in.");
+            RedirectManager.RedirectTo(ReturnUrl);
+        }
+        else if (result.RequiresTwoFactor)
+        {
+            RedirectManager.RedirectTo(
+                "Account/LoginWith2fa",
+                new() { ["returnUrl"] = ReturnUrl, ["rememberMe"] = Input.RememberMe });
+        }
+        else if (result.IsLockedOut)
+        {
+            Logger.LogWarning("User account locked out.");
+            RedirectManager.RedirectTo("Account/Lockout");
+        }
+        else
+        {
+            errorMessage = "Error: Invalid login attempt.";
+        }
+    }
+
+    private sealed class InputModel
+    {
+        [Required] [EmailAddress] public string Email { get; set; } = "";
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; } = "";
+
+        [Display(Name = "Remember me?")] public bool RememberMe { get; set; }
+    }
+
+}

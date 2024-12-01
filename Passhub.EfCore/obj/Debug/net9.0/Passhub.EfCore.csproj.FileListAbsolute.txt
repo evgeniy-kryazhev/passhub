@@ -1,0 +1,17 @@
+C:\Users\evgeniy\Documents\projects\Passhub\Passhub.EfCore\bin\Debug\net9.0\Passhub.EfCore.deps.json
+C:\Users\evgeniy\Documents\projects\Passhub\Passhub.EfCore\bin\Debug\net9.0\Passhub.EfCore.dll
+C:\Users\evgeniy\Documents\projects\Passhub\Passhub.EfCore\bin\Debug\net9.0\Passhub.EfCore.pdb
+C:\Users\evgeniy\Documents\projects\Passhub\Passhub.EfCore\obj\Debug\net9.0\Passhub.EfCore.csproj.AssemblyReference.cache
+C:\Users\evgeniy\Documents\projects\Passhub\Passhub.EfCore\obj\Debug\net9.0\Passhub.EfCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\evgeniy\Documents\projects\Passhub\Passhub.EfCore\obj\Debug\net9.0\Passhub.EfCore.AssemblyInfoInputs.cache
+C:\Users\evgeniy\Documents\projects\Passhub\Passhub.EfCore\obj\Debug\net9.0\Passhub.EfCore.AssemblyInfo.cs
+C:\Users\evgeniy\Documents\projects\Passhub\Passhub.EfCore\obj\Debug\net9.0\Passhub.EfCore.csproj.CoreCompileInputs.cache
+C:\Users\evgeniy\Documents\projects\Passhub\Passhub.EfCore\obj\Debug\net9.0\Passhub.EfCore.dll
+C:\Users\evgeniy\Documents\projects\Passhub\Passhub.EfCore\obj\Debug\net9.0\refint\Passhub.EfCore.dll
+C:\Users\evgeniy\Documents\projects\Passhub\Passhub.EfCore\obj\Debug\net9.0\Passhub.EfCore.pdb
+C:\Users\evgeniy\Documents\projects\Passhub\Passhub.EfCore\obj\Debug\net9.0\ref\Passhub.EfCore.dll
+C:\Users\evgeniy\Documents\projects\passhub\Passhub.EfCore\bin\Debug\net9.0\Passhub.Domain.dll
+C:\Users\evgeniy\Documents\projects\passhub\Passhub.EfCore\bin\Debug\net9.0\Passhub.Domain.pdb
+C:\Users\evgeniy\Documents\projects\passhub\Passhub.EfCore\obj\Debug\net9.0\Passhub..9A4AEF10.Up2Date
+C:\Users\evgeniy\Documents\projects\Passhub\Passhub.EfCore\bin\Debug\net9.0\Passhub.EfCore.runtimeconfig.json
+C:\Users\evgeniy\Documents\projects\Passhub\Passhub.EfCore\obj\Debug\net9.0\Passhub.EfCore.genruntimeconfig.cache

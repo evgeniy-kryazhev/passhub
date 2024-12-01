@@ -1,0 +1,139 @@
+﻿@using Passhub.Web.Services.Identity
+@implements IDisposable
+
+@inject NavigationManager NavigationManager
+@inject ICurrentUser CurrentUser
+
+<nav class="p-4 navbar is-display-flex is-justify-content-end" role="navigation" aria-label="main navigation">
+    <section class="is-display-flex is-justify-content-end is-align-items-center">
+        <div class="buttons">
+            <AuthorizeView>
+                <Authorized>
+                    <div class="dropdown is-right is-hoverable">
+                        <div class="dropdown-trigger">
+                            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                                <span>@CurrentUser.GetEmail()</span>
+                                <span class="icon is-small">
+                                    <ion-icon name="chevron-down-outline"></ion-icon>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                            <div class="dropdown-content">
+                                <form action="Account/Logout" method="post">
+                                    <AntiforgeryToken/>
+                                    <input type="hidden" name="ReturnUrl" value="@_currentUrl"/>
+                                    <button type="submit" class="dropdown-item dropdown-item has-text-danger">Logout</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </Authorized>
+                <NotAuthorized>
+                    <NavLink class="button is-primary" href="Account/Register">
+                        <strong>Sign up</strong>
+                    </NavLink>
+                    <NavLink class="button is-primary is-outlined" href="Account/Login">
+                        Log in
+                    </NavLink>
+                </NotAuthorized>
+            </AuthorizeView>
+            <DarkModeToggle></DarkModeToggle>
+        </div>
+    </section>
+</nav>
+
+@* <div> *@
+@*     <NavLink class="nav-link" href="" Match="NavLinkMatch.All"> *@
+@*         <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home *@
+@*     </NavLink> *@
+@* </div> *@
+
+@* <div class="top-row ps-3 navbar navbar-dark"> *@
+@*     <div class="container-fluid"> *@
+@*         <a class="navbar-brand" href="">Passhub.Web</a> *@
+@*     </div> *@
+@* </div> *@
+@* *@
+@* <input type="checkbox" title="Navigation menu" class="navbar-toggler"/> *@
+@* *@
+@* <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()"> *@
+@*     <nav class="nav flex-column"> *@
+@*         <div class="nav-item px-3"> *@
+@*             <NavLink class="nav-link" href="" Match="NavLinkMatch.All"> *@
+@*                 <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home *@
+@*             </NavLink> *@
+@*         </div> *@
+@* *@
+@*         <div class="nav-item px-3"> *@
+@*             <NavLink class="nav-link" href="counter"> *@
+@*                 <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter *@
+@*             </NavLink> *@
+@*         </div> *@
+@* *@
+@*         <div class="nav-item px-3"> *@
+@*             <NavLink class="nav-link" href="weather"> *@
+@*                 <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather *@
+@*             </NavLink> *@
+@*         </div> *@
+@* *@
+@*         <div class="nav-item px-3"> *@
+@*             <NavLink class="nav-link" href="auth"> *@
+@*                 <span class="bi bi-lock-nav-menu" aria-hidden="true"></span> Auth Required *@
+@*             </NavLink> *@
+@*         </div> *@
+@* *@
+@*         <AuthorizeView> *@
+@*             <Authorized> *@
+@*                 <div class="nav-item px-3"> *@
+@*                     <NavLink class="nav-link" href="Account/Manage"> *@
+@*                         <span class="bi bi-person-fill-nav-menu" aria-hidden="true"></span> @context.User.Identity?.Name *@
+@*                     </NavLink> *@
+@*                 </div> *@
+@*                 <div class="nav-item px-3"> *@
+@*                     <form action="Account/Logout" method="post"> *@
+@*                         <AntiforgeryToken/> *@
+@*                         <input type="hidden" name="ReturnUrl" value="@currentUrl"/> *@
+@*                         <button type="submit" class="nav-link"> *@
+@*                             <span class="bi bi-arrow-bar-left-nav-menu" aria-hidden="true"></span> Logout *@
+@*                         </button> *@
+@*                     </form> *@
+@*                 </div> *@
+@*             </Authorized> *@
+@*             <NotAuthorized> *@
+@*                 <div class="nav-item px-3"> *@
+@*                     <NavLink class="nav-link" href="Account/Register"> *@
+@*                         <span class="bi bi-person-nav-menu" aria-hidden="true"></span> Register *@
+@*                     </NavLink> *@
+@*                 </div> *@
+@*                 <div class="nav-item px-3"> *@
+@*                     <NavLink class="nav-link" href="Account/Login"> *@
+@*                         <span class="bi bi-person-badge-nav-menu" aria-hidden="true"></span> Login *@
+@*                     </NavLink> *@
+@*                 </div> *@
+@*             </NotAuthorized> *@
+@*         </AuthorizeView> *@
+@*     </nav> *@
+@* </div> *@
+
+@code {
+    private string? _currentUrl;
+
+    protected override void OnInitialized()
+    {
+        _currentUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+        NavigationManager.LocationChanged += OnLocationChanged;
+    }
+
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        _currentUrl = NavigationManager.ToBaseRelativePath(e.Location);
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= OnLocationChanged;
+    }
+
+}

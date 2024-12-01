@@ -1,0 +1,35 @@
+﻿@using System.Reactive.Subjects
+@rendermode InteractiveServer
+@inject IJSRuntime JsRuntime
+
+@if (_isActive.Value)
+{
+    <button @onclick="() => _isActive.OnNext(false)" 
+            class="button circle is-small">
+        <span class="icon">
+            <ion-icon name="sunny-outline"></ion-icon>
+        </span>
+    </button>   
+}
+else
+{
+    <button @onclick="() => _isActive.OnNext(true)" 
+            class="button is-primary circle is-small">
+        <span class="icon">
+            <ion-icon name="moon-outline"></ion-icon>
+        </span>
+    </button>
+}
+
+@code
+{
+    private BehaviorSubject<bool> _isActive = new(false);
+
+    protected override void OnInitialized()
+    {
+        _isActive.Subscribe(x =>
+        {
+            JsRuntime.InvokeAsync<bool>("enableDarkMode", x);
+        });
+    }
+}

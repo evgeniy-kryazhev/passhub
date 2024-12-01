@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Passhub.Web", "Passhub.Web\Passhub.Web.csproj", "{37030F9D-71A6-4369-9601-D17D83824198}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Passhub.EfCore", "Passhub.EfCore\Passhub.EfCore.csproj", "{8229BF78-EA29-41D7-9ABE-19E1652AF28B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Passhub.Domain", "Passhub.Domain\Passhub.Domain.csproj", "{A20A4789-D0BC-47BF-9562-E7C77E9D4C11}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37030F9D-71A6-4369-9601-D17D83824198}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37030F9D-71A6-4369-9601-D17D83824198}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37030F9D-71A6-4369-9601-D17D83824198}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37030F9D-71A6-4369-9601-D17D83824198}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8229BF78-EA29-41D7-9ABE-19E1652AF28B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8229BF78-EA29-41D7-9ABE-19E1652AF28B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8229BF78-EA29-41D7-9ABE-19E1652AF28B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8229BF78-EA29-41D7-9ABE-19E1652AF28B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A20A4789-D0BC-47BF-9562-E7C77E9D4C11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A20A4789-D0BC-47BF-9562-E7C77E9D4C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A20A4789-D0BC-47BF-9562-E7C77E9D4C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A20A4789-D0BC-47BF-9562-E7C77E9D4C11}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

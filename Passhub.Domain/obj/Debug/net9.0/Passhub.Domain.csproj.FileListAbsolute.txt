@@ -1,0 +1,12 @@
+C:\Users\evgeniy\Documents\projects\passhub\Passhub.Domain\bin\Debug\net9.0\Passhub.Domain.deps.json
+C:\Users\evgeniy\Documents\projects\passhub\Passhub.Domain\bin\Debug\net9.0\Passhub.Domain.dll
+C:\Users\evgeniy\Documents\projects\passhub\Passhub.Domain\bin\Debug\net9.0\Passhub.Domain.pdb
+C:\Users\evgeniy\Documents\projects\passhub\Passhub.Domain\obj\Debug\net9.0\Passhub.Domain.csproj.AssemblyReference.cache
+C:\Users\evgeniy\Documents\projects\passhub\Passhub.Domain\obj\Debug\net9.0\Passhub.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\evgeniy\Documents\projects\passhub\Passhub.Domain\obj\Debug\net9.0\Passhub.Domain.AssemblyInfoInputs.cache
+C:\Users\evgeniy\Documents\projects\passhub\Passhub.Domain\obj\Debug\net9.0\Passhub.Domain.AssemblyInfo.cs
+C:\Users\evgeniy\Documents\projects\passhub\Passhub.Domain\obj\Debug\net9.0\Passhub.Domain.csproj.CoreCompileInputs.cache
+C:\Users\evgeniy\Documents\projects\passhub\Passhub.Domain\obj\Debug\net9.0\Passhub.Domain.dll
+C:\Users\evgeniy\Documents\projects\passhub\Passhub.Domain\obj\Debug\net9.0\refint\Passhub.Domain.dll
+C:\Users\evgeniy\Documents\projects\passhub\Passhub.Domain\obj\Debug\net9.0\Passhub.Domain.pdb
+C:\Users\evgeniy\Documents\projects\passhub\Passhub.Domain\obj\Debug\net9.0\ref\Passhub.Domain.dll
