@@ -17,6 +17,10 @@ html, body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+body {
+  box-sizing: border-box;
+}
+
 .content {
   padding-top: 1.1rem;
 }

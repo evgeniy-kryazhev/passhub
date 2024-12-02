@@ -31,8 +31,21 @@ public class PasswordManager(IPasswordRepository passwordRepository,
         }
     }
 
-    public Task<string?> DecryptAsync(Password password)
+    public async Task<string?> DecryptAsync(Password password)
     {
-        throw new NotImplementedException();
+        var user = await userRepository.GetAsync(password.UserId);
+        if (user.Email == null)
+        {
+            throw new NullReferenceException(nameof(user.Email));
+        }
+
+        if (user.PasswordHash == null)
+        {
+            throw new NullReferenceException(nameof(user.PasswordHash));
+        }
+        
+        var passwordDecrypt = passwordEncryptor
+            .Decrypt(password.Value, user.PasswordHash, Encoding.UTF8.GetBytes(user.Email));
+        return passwordDecrypt;
     }
 }
