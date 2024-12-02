@@ -9,7 +9,7 @@ public class PasswordService(ICurrentUser currentUser,
 {
     public async Task<Password> CreateASync(string name, string login, string url, string password)
     {
-        var passwordEntity = new Password(Guid.CreateVersion7(), currentUser.GetId(), name, url, login, string.Empty);
+        var passwordEntity = new Password(Guid.NewGuid(), currentUser.GetId(), name, url, login, string.Empty);
         await passwordManager.EncryptAsync(passwordEntity, password);
         return passwordEntity;
     }
