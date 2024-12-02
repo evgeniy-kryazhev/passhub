@@ -1,3 +1,5 @@
+using Blazorise;
+using Blazorise.Bulma;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -48,6 +50,10 @@ builder.Services.AddScoped<IPasswordService, PasswordService>();
 
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IPasswordRepository, PasswordRepository>();
+
+builder.Services
+    .AddBlazorise()
+    .AddBulmaProviders();
 
 var app = builder.Build();
 
