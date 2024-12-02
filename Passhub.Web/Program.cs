@@ -32,6 +32,15 @@ builder.Services.AddAuthentication(options =>
 var connectionString = builder.Configuration.GetConnectionString("Default") ??
                        throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
+if (Environment.GetEnvironmentVariable("DB_CONNECTION") != null)
+{
+    connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION");
+}
+else
+{
+    Console.WriteLine("Not fount env DB_CONNECTION");
+}
+
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -56,6 +65,8 @@ builder.Services
     .AddBulmaProviders();
 
 var app = builder.Build();
+
+await DatabaseInitializer.Seed(app.Services);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
